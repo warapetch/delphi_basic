@@ -23,7 +23,7 @@ object FrmDirectXWebcam: TFrmDirectXWebcam
     Width = 105
     Height = 105
   end
-  object Panel1: TPanel
+  object pnlToolbar: TPanel
     Left = 0
     Top = 0
     Width = 474

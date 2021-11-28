@@ -5,9 +5,10 @@ object DMMain: TDMMain
   PixelsPerInch = 96
   object FDConn: TFDConnection
     Params.Strings = (
-      'Database=D:\project1\data\dbstudent.db'
+      'Database=D:\delphi_basic\project1\data\dbstudent.db'
       'LockingMode=Normal'
       'DriverID=SQLite')
+    Connected = True
     LoginPrompt = False
     BeforeConnect = FDConnBeforeConnect
     Left = 136

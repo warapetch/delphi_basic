@@ -8,10 +8,10 @@ uses
   Vcl.Buttons, Vcl.ExtCtrls, Data.DB, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids;
+  FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids, UTemplate_Base;
 
 type
-  TFrmMas_Student = class(TFrmMas_Template)
+  TFrmMas_Student = class(TFrmTemplate_Base)
     pnlToolbar: TPanel;
     btnData_Add: TBitBtn;
     btnData_Edit: TBitBtn;
@@ -49,7 +49,6 @@ begin
         '[No] = ไม่ลบ ',
         TMsgDlgType.mtConfirmation,[mbYes,mbNo],0) = mrYES then
         qryMas_Student.Delete;
-
 end;
 
 procedure TFrmMas_Student.btnData_EditClick(Sender: TObject);
@@ -59,7 +58,8 @@ begin
     qryMas_Student.Edit;
 
     FrmMas_Student_Add := TFrmMas_Student_Add.Create(NIL);
-    FrmMas_Student_Add.DataState := 'แก้ไขข้อมูล';
+    //date 6411-28 off
+//    FrmMas_Student_Add.DataState := 'แก้ไขข้อมูล';
     FrmMas_Student_Add.dsData.DataSet := qryMas_Student;
     if FrmMas_Student_Add.Showmodal = mrOK then
        qryMas_Student.Refresh;
@@ -70,9 +70,11 @@ end;
 procedure TFrmMas_Student.btnData_AddClick(Sender: TObject);
 begin
     qryMas_Student.Append;
+    // qryMas_Student.State > dsInsert
 
     FrmMas_Student_Add := TFrmMas_Student_Add.Create(NIL);
-    FrmMas_Student_Add.DataState := 'เพิ่มข้อมูล';
+    //date 6411-28 off
+    //FrmMas_Student_Add.DataState := 'เพิ่มข้อมูล';
     FrmMas_Student_Add.dsData.DataSet := qryMas_Student;
     if FrmMas_Student_Add.Showmodal = mrOK then
        qryMas_Student.Refresh;

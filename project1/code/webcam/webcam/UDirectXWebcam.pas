@@ -9,7 +9,7 @@ uses
 
 type
   TFrmDirectXWebcam = class(TForm)
-    Panel1: TPanel;
+    pnlToolbar: TPanel;
     ComboBox1: TComboBox;
     PaintBox1: TPaintBox;
     Label1: TLabel;

@@ -14,9 +14,6 @@ inherited FrmMas_Student: TFrmMas_Student
     Height = 41
     Align = alTop
     TabOrder = 2
-    ExplicitLeft = 120
-    ExplicitTop = 64
-    ExplicitWidth = 185
     object btnData_Add: TBitBtn
       Left = 48
       Top = 4

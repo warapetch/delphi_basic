@@ -17,6 +17,7 @@ type
     procedure btnCloseClick(Sender: TObject);
     procedure btnMasStudentClick(Sender: TObject);
     procedure btnTransRecordsClick(Sender: TObject);
+    procedure btnInquiryClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -30,7 +31,7 @@ implementation
 
 {$R *.dfm}
 
-uses UMas_Student, UTrans_Records;
+uses UMas_Student, UTrans_Records, UDlg_Search_Student;
 
 procedure TFrmMainMenu.btnCloseClick(Sender: TObject);
 begin
@@ -40,6 +41,13 @@ begin
         TMsgDlgType.mtConfirmation,
         [mbYes,mbNo],0) = mrYES then
         Close;
+end;
+
+procedure TFrmMainMenu.btnInquiryClick(Sender: TObject);
+begin
+    FrmDlg_Search_Student := TFrmDlg_Search_Student.Create(NIL);
+    FrmDlg_Search_Student.Showmodal;
+    FreeAndNil(FrmDlg_Search_Student);
 end;
 
 procedure TFrmMainMenu.btnMasStudentClick(Sender: TObject);

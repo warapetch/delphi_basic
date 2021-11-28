@@ -40,9 +40,7 @@ inherited FrmMas_Student_Add: TFrmMas_Student_Add
   inherited pnlTPBottom: TPanel
     Top = 392
     Height = 49
-    ExplicitLeft = 0
     ExplicitTop = 392
-    ExplicitWidth = 624
     ExplicitHeight = 49
     object btnData_Post: TBitBtn
       Left = 208

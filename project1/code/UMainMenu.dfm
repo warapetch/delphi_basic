@@ -23,9 +23,6 @@ object FrmMainMenu: TFrmMainMenu
     Color = 15790320
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 112
-    ExplicitTop = 64
-    ExplicitWidth = 185
   end
   object pnlBottom: TPanel
     Left = 0
@@ -34,9 +31,6 @@ object FrmMainMenu: TFrmMainMenu
     Height = 41
     Align = alBottom
     TabOrder = 1
-    ExplicitLeft = 112
-    ExplicitTop = 120
-    ExplicitWidth = 185
   end
   object btnMasStudent: TBitBtn
     Left = 120
@@ -63,6 +57,7 @@ object FrmMainMenu: TFrmMainMenu
     Height = 73
     Caption = #3626#3629#3610#3606#3634#3617#3586#3657#3629#3617#3641#3621
     TabOrder = 4
+    OnClick = btnInquiryClick
   end
   object btnClose: TBitBtn
     Left = 336

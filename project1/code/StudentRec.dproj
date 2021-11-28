@@ -85,14 +85,14 @@
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
-        <DCC_ExeOutput>D:\project1\output\</DCC_ExeOutput>
+        <DCC_ExeOutput>D:\delphi_basic\project1\output\</DCC_ExeOutput>
         <DCC_DcuOutput>D:\temp\</DCC_DcuOutput>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Icon_MainIcon>StudentRec_Icon.ico</Icon_MainIcon>
         <UWP_DelphiLogo44>..\resource\member.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>..\resource\member.png</UWP_DelphiLogo150>
-        <DCC_UnitSearchPath>D:\project1\code\webcam\Common;D:\project1\code\webcam\Common\DirectX;D:\project1\code\webcam\webcam;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>D:\delphi_basic\project1\code\webcam\Common;D:\delphi_basic\project1\code\webcam\Common\DirectX;D:\delphi_basic\project1\code\webcam\webcam;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -117,21 +117,20 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
+        <DCCReference Include="webcam\webcam\UDirectXWebcam.pas">
+            <Form>FrmDirectXWebcam</Form>
+        </DCCReference>
+        <DCCReference Include="UTemplate_Base.pas">
+            <Form>FrmTemplate_Base</Form>
+        </DCCReference>
+        <DCCReference Include="UTemplate_Student.pas">
+            <Form>FrmTemplate_Student</Form>
+        </DCCReference>
         <DCCReference Include="UMas_Student.pas">
             <Form>FrmMas_Student</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="UMas_Template.pas">
-            <Form>FrmMas_Template</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UMas_Student_Add.pas">
             <Form>FrmMas_Student_Add</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="UMas_Template2.pas">
-            <Form>FrmMas_Template2</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UTrans_Records.pas">
             <Form>FrmTrans_Records</Form>
@@ -143,10 +142,6 @@
         </DCCReference>
         <DCCReference Include="UDlg_Search_Student.pas">
             <Form>FrmDlg_Search_Student</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="webcam\webcam\UDirectXWebcam.pas">
-            <Form>FrmDirectXWebcam</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">
@@ -989,8 +984,8 @@
                 </DeployClass>
                 <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="OSX64" Name="$(PROJECTNAME).app"/>
-                <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Android64" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="OSXARM64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>

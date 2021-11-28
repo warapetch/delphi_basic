@@ -4,35 +4,33 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs , UMas_Template, Vcl.StdCtrls,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs , UTemplate_Base, Vcl.StdCtrls,
   Vcl.Buttons, Vcl.ExtCtrls, Data.DB, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids;
 
 type
-  TFrmTrans_Records = class(TFrmMas_Template)
+  TFrmTrans_Records = class(TFrmTemplate_Base)
+    pnlTerm: TPanel;
+    lblcapTerm: TLabel;
+    cbbClass: TComboBox;
+    edtTermNo: TEdit;
+    btnSetWorkTerm: TBitBtn;
     pnlToolbar: TPanel;
     btnData_Add: TBitBtn;
     btnData_Edit: TBitBtn;
     btnData_Delete: TBitBtn;
     dbgMas_Student: TDBGrid;
-    pnlTerm: TPanel;
-    cbbClass: TComboBox;
-    lblcapTerm: TLabel;
-    edTermNo: TEdit;
-    btnSetWorkTerm: TBitBtn;
-    dsqryTrans_Rec: TDataSource;
-    qryTrans_Rec: TFDQuery;
+    qryTrans_Records: TFDQuery;
+    dsqryTrans_Records: TDataSource;
     procedure btnSetWorkTermClick(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
     procedure btnData_AddClick(Sender: TObject);
     procedure btnData_EditClick(Sender: TObject);
     procedure btnData_DeleteClick(Sender: TObject);
+    procedure edtTermNoKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
-    sClass ,
-    sTermNo : String;
   public
     { Public declarations }
   end;
@@ -47,110 +45,105 @@ implementation
 uses UDlg_Search_Student, UTrans_Records_Add;
 
 procedure TFrmTrans_Records.btnData_AddClick(Sender: TObject);
-var selectCode : String;
+var sStudentCode : String;
 begin
-    if (sClass = '') or (sTermNo = '') then
+
+    if (cbbClass.Text = '') or (Trim(edtTermNo.Text) = '') then
        begin
            ShowMessage('กำหนดชั้นเรียน และ เทอม ก่อน !!');
            Exit;
        end;
 
-
-    // popup dialog student search
-
-//    if ModalResult = mrOK then
-//       next
-    selectCode := '';
+    // 1 Show Search Student > Found (ST_CODE)
+    //---------------------------------------
+    sStudentCode := '';
     FrmDlg_Search_Student := TFrmDlg_Search_Student.Create(NIL);
     if FrmDlg_Search_Student.Showmodal = mrOK then
        begin
-          selectCode := FrmDlg_Search_Student.select_code;
+          //sStudentCode := FrmDlg_Search_Student.Select_StudentCode;
        end;
     FreeAndNil(FrmDlg_Search_Student);
+    //---------------------------------------
 
-    if (selectCode <> '') then
+
+    if (sStudentCode <> '') then
        begin
-          qryTrans_Rec.Append;
-          qryTrans_Rec['st_code'] := selectCode;
-          qryTrans_Rec['st_class'] := sClass;
-          qryTrans_Rec['st_termno'] := sTermNo;
+          // Check have Student Code ?
+          if qryTrans_Records.Locate('st_code',sStudentCode,[]) then
+             begin
+                qryTrans_Records.Edit;
+             end
+          else
+          begin
+              // 2 Append Dataset
+              qryTrans_Records.Append;
+              qryTrans_Records['st_code']   := sStudentCode;
+              qryTrans_Records['st_class']  := cbbClass.Text;
+              qryTrans_Records['st_termno'] := edtTermNo.Text;
+          end;
 
+          // 3 Show Trans_Records_Add
           FrmTrans_Records_Add := TFrmTrans_Records_Add.Create(NIL);
-          FrmTrans_Records_Add.DataState := 'เพิ่มข้อมูล';
-          FrmTrans_Records_Add.stClass  := sClass;
-          FrmTrans_Records_Add.stTermNo := sTermNo;
-          FrmTrans_Records_Add.stCode   := selectCode;
-          FrmTrans_Records_Add.dsData.DataSet := qryTrans_Rec;
+          FrmTrans_Records_Add.StudentCode    := sStudentCode;
+          FrmTrans_Records_Add.dsData.DataSet := qryTrans_Records;
           if FrmTrans_Records_Add.Showmodal = mrOK then
-             qryTrans_Rec.Refresh;
+             qryTrans_Records.Refresh;
           FreeAndNil(FrmTrans_Records_Add);
        end;
-
 end;
 
 procedure TFrmTrans_Records.btnData_DeleteClick(Sender: TObject);
 begin
-    if qryTrans_Rec.RecordCount = 0 then Exit;
+    if qryTrans_Records.RecordCount = 0 then Exit;
 
     if MessageDlg('ยืนยันการลบข้อมูลผลการเรียน ?'#13#10+
-        qryTrans_Rec.FieldByName('st_fullname').AsString+#13#10+
+        qryTrans_Records.FieldByName('st_fullname').AsString+#13#10+
         '[Yes] = ลบข้อมูล '#13#10+
         '[No] = ไม่ลบ ',
         TMsgDlgType.mtConfirmation,[mbYes,mbNo],0) = mrYES then
-        qryTrans_Rec.Delete;
+        qryTrans_Records.Delete;
 end;
 
 procedure TFrmTrans_Records.btnData_EditClick(Sender: TObject);
 begin
-   if qryTrans_Rec.RecordCount = 0 then Exit;
+    if qryTrans_Records.RecordCount = 0 then Exit;
 
-    qryTrans_Rec.Edit;
+    qryTrans_Records.Edit;
 
     FrmTrans_Records_Add := TFrmTrans_Records_Add.Create(NIL);
-    FrmTrans_Records_Add.DataState := 'แก้ไขข้อมูล';
-    FrmTrans_Records_Add.dsData.DataSet := qryTrans_Rec;
-    FrmTrans_Records_Add.stClass  := sClass;
-    FrmTrans_Records_Add.stTermNo := sTermNo;
-    FrmTrans_Records_Add.stCode   := qryTrans_Rec.FieldByName('st_code').AsString;
+    FrmTrans_Records_Add.StudentCode    := qryTrans_Records.FieldByName('st_code').AsString;
+    FrmTrans_Records_Add.dsData.DataSet := qryTrans_Records;
     if FrmTrans_Records_Add.Showmodal = mrOK then
-       qryTrans_Rec.Refresh;
+       qryTrans_Records.Refresh;
     FreeAndNil(FrmTrans_Records_Add);
 end;
 
 procedure TFrmTrans_Records.btnSetWorkTermClick(Sender: TObject);
 begin
-    if cbbClass.ItemIndex = -1 then
-       begin
-          Showmessage('เลือกชั้นเรียนก่อน !!');
-          Exit;
-       end;
+//  inherited;  comment or delete this word
 
-    if edTermNo.text = '' then
-       begin
-          Showmessage('กำหนดเทอมก่อน !!');
-          Exit;
-       end;
+    if (cbbClass.itemindex = -1) then
+        begin
+            ShowMessage('เลือกชั้นเรียนก่อน !!');
+            Exit;
+        end;
 
-    // set Work Term
-    sClass  := cbbClass.Text;
-    sTermNo := edTermNo.Text;
+    if (Trim(edtTermNo.text) = '') then
+        begin
+            ShowMessage('กำหนดเทอมก่อน !!');
+            Exit;
+        end;
 
-    // Open Dataset
-    if qryTrans_Rec.State = dsBrowse then
-       qryTrans_Rec.Close;
-
-    qryTrans_Rec.ParamByName('st_class').AsString := cbbClass.Text;
-    qryTrans_Rec.ParamByName('st_termno').AsString := edTermNo.Text;
-    qryTrans_Rec.Open;
-
+    qryTrans_Records.Close;
+    qryTrans_Records.ParamByName('st_class').AsString  := cbbClass.Text;
+    qryTrans_Records.ParamByName('st_termno').AsString := edtTermNo.Text;
+    qryTrans_Records.Open;
 end;
 
-procedure TFrmTrans_Records.FormCreate(Sender: TObject);
+procedure TFrmTrans_Records.edtTermNoKeyPress(Sender: TObject; var Key: Char);
 begin
-  inherited;
-    sClass  := '';
-    sTermNo := '';
-
+    if (Key = #13) and (Trim(edtTermNo.Text) <> '') then
+        btnSetWorkTermClick(edtTermNo);
 end;
 
 end.

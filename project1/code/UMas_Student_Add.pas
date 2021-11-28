@@ -5,10 +5,11 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs , UMas_Template, Vcl.StdCtrls,
-  Vcl.Buttons, Vcl.ExtCtrls, Data.DB, Vcl.Mask, Vcl.DBCtrls, Vcl.ExtDlgs;
+  Vcl.Buttons, Vcl.ExtCtrls, Data.DB, Vcl.Mask, Vcl.DBCtrls, Vcl.ExtDlgs,
+  UTemplate_Base;
 
 type
-  TFrmMas_Student_Add = class(TFrmMas_Template)
+  TFrmMas_Student_Add = class(TFrmTemplate_Base)
     btnData_Post: TBitBtn;
     btnData_Cancel: TBitBtn;
     dsData: TDataSource;
@@ -34,7 +35,8 @@ type
     { Private declarations }
   public
     { Public declarations }
-    DataState : String;
+    //date 6411-28 off
+    //DataState : String;
   end;
 
 var
@@ -92,9 +94,15 @@ begin
 end;
 
 procedure TFrmMas_Student_Add.FormShow(Sender: TObject);
+var sDataState : String;
 begin
+    //date 6411-28 add
+    if dsData.DataSet.State = dsInsert then
+       sDataState := 'เพิ่มข้อมูล'
+    else
+       sDataState := 'แก้ไขข้อมูล';
 
-    Caption := Caption + '['+DataState+']';
+    Caption := Caption + ' ['+sDataState+']';
 
   inherited;
 

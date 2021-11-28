@@ -1,18 +1,62 @@
 inherited FrmTrans_Records: TFrmTrans_Records
   Caption = #3612#3621#3585#3634#3619#3648#3619#3637#3618#3609
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 17
+  object pnlTerm: TPanel
+    Left = 0
+    Top = 49
+    Width = 624
+    Height = 41
+    Align = alTop
+    TabOrder = 2
+    object lblcapTerm: TLabel
+      Left = 32
+      Top = 12
+      Width = 51
+      Height = 17
+      Caption = #3591#3623#3604#3607#3635#3591#3634#3609
+    end
+    object cbbClass: TComboBox
+      Left = 88
+      Top = 10
+      Width = 89
+      Height = 24
+      Style = csOwnerDrawVariable
+      ItemHeight = 18
+      TabOrder = 0
+      Items.Strings = (
+        #3611'1'
+        #3611'2'
+        #3611'3'
+        #3611'4'
+        #3611'5'
+        #3611'6')
+    end
+    object edtTermNo: TEdit
+      Left = 183
+      Top = 10
+      Width = 121
+      Height = 25
+      TabOrder = 1
+      OnKeyPress = edtTermNoKeyPress
+    end
+    object btnSetWorkTerm: TBitBtn
+      Left = 310
+      Top = 10
+      Width = 75
+      Height = 25
+      Caption = #3585#3635#3627#3609#3604
+      TabOrder = 2
+      OnClick = btnSetWorkTermClick
+    end
+  end
   object pnlToolbar: TPanel
     Left = 0
     Top = 90
     Width = 624
     Height = 41
     Align = alTop
-    TabOrder = 2
-    ExplicitLeft = 120
-    ExplicitTop = 64
-    ExplicitWidth = 185
+    TabOrder = 3
     object btnData_Add: TBitBtn
       Left = 88
       Top = 4
@@ -65,7 +109,7 @@ inherited FrmTrans_Records: TFrmTrans_Records
     Width = 624
     Height = 269
     Align = alClient
-    DataSource = dsqryTrans_Rec
+    DataSource = dsqryTrans_Records
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -73,7 +117,7 @@ inherited FrmTrans_Records: TFrmTrans_Records
     Font.Style = []
     Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
     ParentFont = False
-    TabOrder = 3
+    TabOrder = 4
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -13
@@ -125,60 +169,7 @@ inherited FrmTrans_Records: TFrmTrans_Records
         Visible = True
       end>
   end
-  object pnlTerm: TPanel
-    Left = 0
-    Top = 49
-    Width = 624
-    Height = 41
-    Align = alTop
-    TabOrder = 4
-    ExplicitTop = 34
-    object lblcapTerm: TLabel
-      Left = 32
-      Top = 12
-      Width = 51
-      Height = 17
-      Caption = #3591#3623#3604#3607#3635#3591#3634#3609
-    end
-    object cbbClass: TComboBox
-      Left = 88
-      Top = 9
-      Width = 89
-      Height = 22
-      Style = csOwnerDrawVariable
-      TabOrder = 0
-      Items.Strings = (
-        #3611'1'
-        #3611'2'
-        #3611'3'
-        #3611'4'
-        #3611'5'
-        #3611'6')
-    end
-    object edTermNo: TEdit
-      Left = 183
-      Top = 10
-      Width = 121
-      Height = 25
-      TabOrder = 1
-    end
-    object btnSetWorkTerm: TBitBtn
-      Left = 310
-      Top = 10
-      Width = 75
-      Height = 25
-      Caption = #3585#3635#3627#3609#3604
-      TabOrder = 2
-      OnClick = btnSetWorkTermClick
-    end
-  end
-  object dsqryTrans_Rec: TDataSource
-    AutoEdit = False
-    DataSet = qryTrans_Rec
-    Left = 328
-    Top = 216
-  end
-  object qryTrans_Rec: TFDQuery
+  object qryTrans_Records: TFDQuery
     Connection = DMMain.FDConn
     SQL.Strings = (
       'select tr.*,ms.* ,'
@@ -192,7 +183,7 @@ inherited FrmTrans_Records: TFrmTrans_Records
       ''
       'order by st_class ,st_termno')
     Left = 328
-    Top = 152
+    Top = 192
     ParamData = <
       item
         Name = 'ST_CLASS'
@@ -206,5 +197,11 @@ inherited FrmTrans_Records: TFrmTrans_Records
         ParamType = ptInput
         Value = Null
       end>
+  end
+  object dsqryTrans_Records: TDataSource
+    AutoEdit = False
+    DataSet = qryTrans_Records
+    Left = 328
+    Top = 256
   end
 end

@@ -1,24 +1,27 @@
 inherited FrmDlg_Search_Student: TFrmDlg_Search_Student
+  BorderIcons = []
+  BorderStyle = bsDialog
   Caption = #3588#3657#3609#3627#3634#3609#3633#3585#3648#3619#3637#3618#3609
+  ClientWidth = 469
+  ExplicitWidth = 485
   PixelsPerInch = 96
   TextHeight = 17
   inherited pnlTPTop: TPanel
-    inherited btnTPClose: TBitBtn
-      Visible = False
-    end
+    Width = 469
   end
   inherited pnlTPBottom: TPanel
+    Width = 469
     object btnSearchOK: TBitBtn
-      Left = 213
+      Left = 118
       Top = 4
       Width = 75
       Height = 33
       Caption = #3648#3621#3639#3629#3585
       TabOrder = 0
-      OnClick = btnTPCloseClick
+      OnClick = btnSearchOKClick
     end
     object btnSearchCancel: TBitBtn
-      Left = 304
+      Left = 209
       Top = 4
       Width = 75
       Height = 33
@@ -30,13 +33,11 @@ inherited FrmDlg_Search_Student: TFrmDlg_Search_Student
   object pnlSearch: TPanel
     Left = 0
     Top = 49
-    Width = 624
+    Width = 469
     Height = 41
     Align = alTop
     TabOrder = 2
-    ExplicitLeft = 112
-    ExplicitTop = 80
-    ExplicitWidth = 185
+    ExplicitWidth = 467
     object lblSearch: TLabel
       Left = 16
       Top = 8
@@ -57,7 +58,7 @@ inherited FrmDlg_Search_Student: TFrmDlg_Search_Student
       Top = 4
       Width = 75
       Height = 33
-      Caption = 'Search'
+      Caption = #3588#3657#3609#3627#3634
       TabOrder = 3
       OnClick = btnSearchClick
     end
@@ -85,7 +86,7 @@ inherited FrmDlg_Search_Student: TFrmDlg_Search_Student
   object dbgMas_Student: TDBGrid
     Left = 0
     Top = 90
-    Width = 624
+    Width = 469
     Height = 310
     Align = alClient
     DataSource = dsqryMas_Student
@@ -132,11 +133,6 @@ inherited FrmDlg_Search_Student: TFrmDlg_Search_Student
         Visible = True
       end>
   end
-  object dsqryMas_Student: TDataSource
-    DataSet = qryMas_Student
-    Left = 216
-    Top = 216
-  end
   object qryMas_Student: TFDQuery
     Connection = DMMain.FDConn
     SQL.Strings = (
@@ -154,6 +150,11 @@ inherited FrmDlg_Search_Student: TFrmDlg_Search_Student
       ''
       'order by st_code')
     Left = 216
-    Top = 152
+    Top = 192
+  end
+  object dsqryMas_Student: TDataSource
+    DataSet = qryMas_Student
+    Left = 216
+    Top = 256
   end
 end
