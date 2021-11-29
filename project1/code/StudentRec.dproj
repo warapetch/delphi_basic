@@ -92,7 +92,7 @@
         <Icon_MainIcon>StudentRec_Icon.ico</Icon_MainIcon>
         <UWP_DelphiLogo44>..\resource\member.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>..\resource\member.png</UWP_DelphiLogo150>
-        <DCC_UnitSearchPath>D:\delphi_basic\project1\code\webcam\Common;D:\delphi_basic\project1\code\webcam\Common\DirectX;D:\delphi_basic\project1\code\webcam\webcam;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>D:\delphi_basic\project1\code\webcam\Common;D:\delphi_basic\project1\code\webcam\Common\DirectX;D:\delphi_basic\project1\code\webcam\webcam;D:\components\FastReport 6.915\Source;D:\components\FastReport 6.915\FastScript;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -142,6 +142,18 @@
         </DCCReference>
         <DCCReference Include="UDlg_Search_Student.pas">
             <Form>FrmDlg_Search_Student</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="UQryMas_Student.pas">
+            <Form>FrmQryMas_Student</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="UQryTrans_Result.pas">
+            <Form>FrmQryTrans_Result</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="UQryTrans_Result_Top10.pas">
+            <Form>FrmQryTrans_Result_Top10</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">
@@ -986,8 +998,8 @@
                 <ProjectRoot Platform="OSX64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Android64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
-                <ProjectRoot Platform="OSXARM64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="OSXARM64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Linux64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>

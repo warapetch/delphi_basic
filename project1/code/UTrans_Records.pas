@@ -58,6 +58,7 @@ begin
     //---------------------------------------
     sStudentCode := '';
     FrmDlg_Search_Student := TFrmDlg_Search_Student.Create(NIL);
+    FrmDlg_Search_Student.StudentClass := cbbClass.Text;
     if FrmDlg_Search_Student.Showmodal = mrOK then
        begin
           //sStudentCode := FrmDlg_Search_Student.Select_StudentCode;

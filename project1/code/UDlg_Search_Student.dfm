@@ -8,9 +8,11 @@ inherited FrmDlg_Search_Student: TFrmDlg_Search_Student
   TextHeight = 17
   inherited pnlTPTop: TPanel
     Width = 469
+    ExplicitWidth = 469
   end
   inherited pnlTPBottom: TPanel
     Width = 469
+    ExplicitWidth = 469
     object btnSearchOK: TBitBtn
       Left = 118
       Top = 4
@@ -37,7 +39,6 @@ inherited FrmDlg_Search_Student: TFrmDlg_Search_Student
     Height = 41
     Align = alTop
     TabOrder = 2
-    ExplicitWidth = 467
     object lblSearch: TLabel
       Left = 16
       Top = 8

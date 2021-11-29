@@ -1,4 +1,6 @@
 inherited FrmTrans_Records: TFrmTrans_Records
+  BorderIcons = []
+  BorderStyle = bsDialog
   Caption = #3612#3621#3585#3634#3619#3648#3619#3637#3618#3609
   PixelsPerInch = 96
   TextHeight = 17
@@ -174,14 +176,15 @@ inherited FrmTrans_Records: TFrmTrans_Records
     SQL.Strings = (
       'select tr.*,ms.* ,'
       'ms.st_name||'#39' '#39'||ms.st_surname as "st_fullname"'
-      'from trans_records tr'
+      'from trans_records tr '
       '  left outer join mas_student ms'
-      '       on ms.st_code = tr.st_code  '
+      '       on ms.st_class = tr.st_class'
+      '       and ms.st_code = tr.st_code  '
       ' '
-      'where st_class = :st_class '
-      'and st_termno = :st_termno'
+      'where tr.st_class = :st_class '
+      'and tr.st_termno = :st_termno'
       ''
-      'order by st_class ,st_termno')
+      'order by tr.st_class ,tr.st_termno')
     Left = 328
     Top = 192
     ParamData = <

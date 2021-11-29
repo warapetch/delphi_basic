@@ -1,8 +1,6 @@
 *.exe
 *.bmp
 *.jpg
-*.png
-*.bat
 *.dcu
 *.~*
 *.jfif

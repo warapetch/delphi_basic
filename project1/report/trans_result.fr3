@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<TfrxReport Version="6.9.15" DotMatrixReport="False" EngineOptions.DoublePass="True" IniFile="\Software\Fast Reports" PreviewOptions.AllowEdit="False" PreviewOptions.AllowPreviewEdit="False" PreviewOptions.Buttons="9265" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="44529.4029445139" ReportOptions.Description.Text="" ReportOptions.LastChange="44529.4280808796" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end.">
+  <Datasets>
+    <item DataSet="fdbData" DataSetName="data"/>
+  </Datasets>
+  <TfrxDataPage Name="Data" HGuides.Text="" VGuides.Text="" Height="1000" Left="0" Top="0" Width="1000"/>
+  <TfrxReportPage Name="Page1" HGuides.Text="" VGuides.Text="" PaperWidth="215.9" PaperHeight="279.4" PaperSize="1" LeftMargin="10" RightMargin="10" TopMargin="10" BottomMargin="10" ColumnWidth="0" ColumnPositions.Text="" Frame.Typ="0" MirrorMode="0">
+    <TfrxPageHeader Name="PageHeader1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="105.82684" Left="0" Top="18.89765" Width="740.409927">
+      <TfrxMemoView Name="Memo1" Align="baCenter" AllowVectorExport="True" Left="20.5984385" Top="18.89765" Width="699.21305" Height="37.7953" Font.Charset="222" Font.Color="0" Font.Height="-24" Font.Name="Tahoma" Font.Style="1" Frame.Typ="0" HAlign="haCenter" ParentFont="False" Text="รายงานผลการเรียน [&#60;data.&#34;st_class&#34;&#62;]  เทอม [data.&#34;st_termno&#34;]"/>
+      <TfrxMemoView Name="Memo2" IndexTag="1" AllowVectorExport="True" Left="26.45671" Top="79.37013" Width="79.37013" Height="18.89765" DataSet="fdbData" DataSetName="data" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Tahoma" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="รหัสนักเรียน"/>
+      <TfrxMemoView Name="Memo3" IndexTag="1" AllowVectorExport="True" Left="124.72449" Top="79.37013" Width="128.50402" Height="18.89765" DataSet="fdbData" DataSetName="data" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Tahoma" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="ชื่อ"/>
+      <TfrxMemoView Name="Memo4" IndexTag="1" AllowVectorExport="True" Left="264.5671" Top="79.37013" Width="166.29932" Height="18.89765" DataSet="fdbData" DataSetName="data" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Tahoma" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="นามสกุล"/>
+      <TfrxMemoView Name="Memo5" IndexTag="1" AllowVectorExport="True" Left="449.76407" Top="79.37013" Width="79.37013" Height="18.89765" DataSet="fdbData" DataSetName="data" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Tahoma" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="เกรด"/>
+      <TfrxLineView Name="Line1" AllowVectorExport="True" Left="22.67718" Top="102.04731" Width="521.57514" Height="0" Color="0" Frame.Typ="0" Diagonal="True"/>
+    </TfrxPageHeader>
+    <TfrxMasterData Name="MasterData1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="30.23624" Left="0" Top="185.19697" Width="740.409927" ColumnWidth="0" ColumnGap="0" DataSet="fdbData" DataSetName="data" RowCount="0">
+      <TfrxMemoView Name="datast_code" IndexTag="1" AllowVectorExport="True" Left="26.45671" Top="3.77953" Width="79.37013" Height="18.89765" DataField="st_code" DataSet="fdbData" DataSetName="data" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Tahoma" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="[data.&#34;st_code&#34;]"/>
+      <TfrxMemoView Name="datast_name" IndexTag="1" AllowVectorExport="True" Left="124.72449" Top="3.77953" Width="128.50402" Height="18.89765" DataField="st_name" DataSet="fdbData" DataSetName="data" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Tahoma" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="[data.&#34;st_name&#34;]"/>
+      <TfrxMemoView Name="datast_surname" IndexTag="1" AllowVectorExport="True" Left="264.5671" Top="3.77953" Width="166.29932" Height="18.89765" DataField="st_surname" DataSet="fdbData" DataSetName="data" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Tahoma" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="[data.&#34;st_surname&#34;]"/>
+      <TfrxMemoView Name="datagender_desc" IndexTag="1" AllowVectorExport="True" Left="449.76407" Top="3.77953" Width="79.37013" Height="18.89765" DataSet="fdbData" DataSetName="data" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Tahoma" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="[data.&#34;st_grade&#34;]"/>
+    </TfrxMasterData>
+    <TfrxPageFooter Name="PageFooter1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="22.67718" Left="0" Top="336.37817" Width="740.409927">
+      <TfrxMemoView Name="Memo6" AllowVectorExport="True" Left="623.62245" Top="2.77953" Width="94.48825" Height="18.89765" Frame.Typ="0" Text="[&#60;Page#&#62;] / [&#60;TotalPages#&#62;]"/>
+    </TfrxPageFooter>
+    <TfrxReportSummary Name="ReportSummary1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="37.7953" Left="0" Top="275.90569" Width="740.409927">
+      <TfrxMemoView Name="Memo7" AllowVectorExport="True" Left="449.76407" Top="11.33859" Width="75.5906" Height="18.89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Tahoma" Font.Style="0" Frame.Typ="0" HAlign="haRight" ParentFont="False" Text="จำนวน  [COUNT(MasterData1)] คน"/>
+      <TfrxLineView Name="Line2" AllowVectorExport="True" Left="18.89765" Top="3.77953" Width="532.91373" Height="0" Color="0" Frame.Typ="0" Diagonal="True"/>
+    </TfrxReportSummary>
+  </TfrxReportPage>
+</TfrxReport>

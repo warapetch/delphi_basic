@@ -1,4 +1,6 @@
 inherited FrmTrans_Records_Add: TFrmTrans_Records_Add
+  BorderIcons = []
+  BorderStyle = bsDialog
   Caption = #3612#3621#3585#3634#3619#3648#3619#3637#3618#3609
   ClientHeight = 368
   ExplicitHeight = 407
@@ -24,6 +26,11 @@ inherited FrmTrans_Records_Add: TFrmTrans_Records_Add
     Width = 61
     Height = 17
     Caption = #3612#3656#3634#3609'/'#3652#3617#3656#3612#3656#3634#3609
+  end
+  inherited pnlTPTop: TPanel
+    inherited btnTPClose: TBitBtn
+      Visible = False
+    end
   end
   inherited pnlTPBottom: TPanel
     Top = 320
@@ -109,6 +116,7 @@ inherited FrmTrans_Records_Add: TFrmTrans_Records_Add
       Height = 25
       DataField = 'st_class'
       DataSource = dsData
+      Enabled = False
       TabOrder = 0
     end
     object dbeTermNo: TDBEdit
@@ -118,6 +126,7 @@ inherited FrmTrans_Records_Add: TFrmTrans_Records_Add
       Height = 25
       DataField = 'st_termno'
       DataSource = dsData
+      Enabled = False
       TabOrder = 1
     end
   end

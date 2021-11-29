@@ -28,10 +28,12 @@ type
     procedure btnSearchCancelClick(Sender: TObject);
     procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure rbtCodeClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+    StudentClass ,
     Select_StudentCode : String;
   end;
 
@@ -50,7 +52,7 @@ begin
 end;
 
 procedure TFrmDlg_Search_Student.btnSearchClick(Sender: TObject);
-var sSearchBy : String;
+var sSearchBy,sClass : String;
 begin
     Select_StudentCode := '';
     sSearchBy := '';
@@ -66,8 +68,13 @@ begin
          Exit;
        end;
 
+    sClass := '';
+    if StudentClass <> '' then
+       sClass := ' and (st_class = '+QuotedStr(StudentClass)+')';
+
     qryMas_Student.Close;    // --10
-    qryMas_Student.SQL[10] := ' where '+ sSearchBy+' like '+QuotedStr(edtSearch.Text+'%');
+    qryMas_Student.SQL[10] := ' where ('+ sSearchBy+' like '+QuotedStr(edtSearch.Text+'%')+')'+
+                              sClass;
     qryMas_Student.Open;
 
 end;
@@ -87,6 +94,18 @@ procedure TFrmDlg_Search_Student.edtSearchKeyPress(Sender: TObject;
 begin
     if (Key = #13) and (Trim(edtSearch.Text) <> '') then
         btnSearchClick(edtSearch);
+end;
+
+procedure TFrmDlg_Search_Student.FormShow(Sender: TObject);
+begin
+
+    if StudentClass = '' then
+    	Caption := Caption + ' [ ทั้งหมด ]'
+    else
+	Caption := Caption + ' [ '+StudentClass+' ]';
+
+  inherited;
+
 end;
 
 procedure TFrmDlg_Search_Student.rbtCodeClick(Sender: TObject);

@@ -80,11 +80,14 @@ end;
 procedure TDMMain.FDConnBeforeConnect(Sender: TObject);
 var dfDatabase : String;
 begin
-    // SQLite
+    // SQLite  default == '..\data\dbstudent.db'
     dfDatabase := '..\data'+PathDelim+'dbstudent.db';
+    FDConn.Params.DriverID := '';
+    FDConn.Params.Database := '';
+
     // Load Config
     FDConn.Params.DriverID := GetConfigValue('driverid','SQLite');
-    FDConn.Params.Database := GetConfigValue('database00',dfDatabase);
+    FDConn.Params.Database := GetConfigValue('database',dfDatabase);
 
 end;
 

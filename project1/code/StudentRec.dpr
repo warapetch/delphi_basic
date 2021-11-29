@@ -11,7 +11,10 @@ uses
   UMas_Student_Add in 'UMas_Student_Add.pas' {FrmMas_Student_Add},
   UTrans_Records in 'UTrans_Records.pas' {FrmTrans_Records},
   UTrans_Records_Add in 'UTrans_Records_Add.pas' {FrmTrans_Records_Add},
-  UDlg_Search_Student in 'UDlg_Search_Student.pas' {FrmDlg_Search_Student};
+  UDlg_Search_Student in 'UDlg_Search_Student.pas' {FrmDlg_Search_Student},
+  UQryMas_Student in 'UQryMas_Student.pas' {FrmQryMas_Student},
+  UQryTrans_Result in 'UQryTrans_Result.pas' {FrmQryTrans_Result},
+  UQryTrans_Result_Top10 in 'UQryTrans_Result_Top10.pas' {FrmQryTrans_Result_Top10};
 
 {$R *.res}
 
@@ -20,6 +23,5 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TDMMain, DMMain);
   Application.CreateForm(TFrmMainMenu, FrmMainMenu);
-
   Application.Run;
 end.

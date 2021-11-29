@@ -1,4 +1,6 @@
 inherited FrmMas_Student: TFrmMas_Student
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
   Caption = #3607#3632#3648#3610#3637#3618#3609#3609#3633#3585#3648#3619#3637#3618#3609
   PixelsPerInch = 96
   TextHeight = 17
@@ -107,6 +109,12 @@ inherited FrmMas_Student: TFrmMas_Student
         FieldName = 'gender_desc'
         Title.Caption = #3648#3614#3624
         Width = 62
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'st_class'
+        Title.Caption = #3594#3633#3657#3609#3648#3619#3637#3618#3609
         Visible = True
       end>
   end

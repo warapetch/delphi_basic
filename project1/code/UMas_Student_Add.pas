@@ -25,6 +25,8 @@ type
     btnCapture: TBitBtn;
     btnImageLoad: TBitBtn;
     OpenPictureDialog1: TOpenPictureDialog;
+    Label5: TLabel;
+    dbcClass: TDBComboBox;
     procedure FormShow(Sender: TObject);
     procedure btnTPCloseClick(Sender: TObject);
     procedure btnData_CancelClick(Sender: TObject);
