@@ -103,7 +103,9 @@ inherited FrmQryMas_Student: TFrmQryMas_Student
     ParamData = <
       item
         Name = 'ST_CLASS'
+        DataType = ftString
         ParamType = ptInput
+        Value = Null
       end>
     object qryDatast_code: TStringField
       DisplayLabel = #3619#3627#3633#3626#3609#3633#3585#3648#3619#3637#3618#3609
@@ -222,7 +224,7 @@ inherited FrmQryMas_Student: TFrmQryMas_Student
           Font.Style = [fsBold]
           Frame.Typ = []
           Memo.UTF8W = (
-            #3619#3634#3618#3591#3634#3609#3609#3633#3585#3648#3619#3637#3618#3609' [<data."st_class">]')
+            #3619#3634#3618#3591#3634#3609#3609#3633#3585#3648#3619#3637#3618#3609'  [data."st_class"]')
           ParentFont = False
         end
         object Memo2: TfrxMemoView
