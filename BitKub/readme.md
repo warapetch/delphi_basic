@@ -1,17 +1,19 @@
 
-# Delphi + ดึงข้อมูล API จาก BitKub
+# Delphi + ดึงข้อมูลราคาหุ้น/ค่าเงิน จาก BitKub API
 
 
 วิดีโอ
-เดลไฟ :: ทดลองเขียน WebAPP ผ่าน Google Apps Script + Google Sheet
+เดลไฟ :: ดึงข้อมูลราคาหุ้น/ค่าเงิน จาก BitKub API
 
 https://www.youtube.com/watch?v=6zqBwR5Bnkk&ab_channel=WarapetchFreelanceProgramming
 
-ตอนที่ 1/2  \n 
+ตอนที่ 1/2   
+
 [![cover](http://img.youtube.com/vi/vVLGgfrh6TY/0.jpg)](https://www.youtube.com/watch?v=vVLGgfrh6TY&ab_channel=HowToCode "Click to Play Video")
 
 
-ตอนที่ 2/2  \n 
+ตอนที่ 2/2   
+
 [![cover](http://img.youtube.com/vi/VkYixwHB9PU/0.jpg)](https://www.youtube.com/watch?v=VkYixwHB9PU&ab_channel=HowToCode "Click to Play Video")
 
 
