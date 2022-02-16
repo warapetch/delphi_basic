@@ -1,10 +1,10 @@
-object FrmMainBig: TFrmMainBig
+object FrmMainSmall: TFrmMainSmall
   Left = 0
   Top = 0
   BorderStyle = bsNone
   Caption = 'DateTime'
-  ClientHeight = 101
-  ClientWidth = 301
+  ClientHeight = 38
+  ClientWidth = 352
   Color = clWhite
   DoubleBuffered = True
   Font.Charset = DEFAULT_CHARSET
@@ -18,41 +18,24 @@ object FrmMainBig: TFrmMainBig
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object lblTime: TLabel
-    Left = 0
-    Top = 41
-    Width = 301
-    Height = 60
-    Cursor = crHandPoint
-    Align = alClient
-    Alignment = taCenter
-    Caption = 'Load ..'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = 8404992
-    Font.Height = -53
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentFont = False
-    Transparent = False
-    ExplicitWidth = 178
-    ExplicitHeight = 64
-  end
   object pnlDate: TPanel
     Left = 0
     Top = 0
-    Width = 301
+    Width = 352
     Height = 41
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 0
+    ExplicitWidth = 507
     object lblDayName: TLabel
       Left = 0
       Top = 0
-      Width = 8
+      Width = 21
       Height = 41
       Cursor = crHandPoint
       Align = alLeft
       Alignment = taCenter
+      Caption = '...'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
       Font.Height = -24
@@ -63,28 +46,53 @@ object FrmMainBig: TFrmMainBig
       OnMouseDown = lblDateMouseDown
       ExplicitHeight = 29
     end
-    object lblDate: TLabel
-      Left = 8
+    object lblTime: TLabel
+      Left = 176
       Top = 0
-      Width = 293
+      Width = 176
       Height = 41
       Cursor = crHandPoint
       Align = alClient
       Alignment = taCenter
+      Caption = 'Load ..'
+      Color = 8454143
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlack
-      Font.Height = -32
+      Font.Color = 8404992
+      Font.Height = -27
       Font.Name = 'Tahoma'
       Font.Style = []
+      ParentColor = False
       ParentFont = False
       Transparent = False
       OnMouseDown = lblDateMouseDown
-      ExplicitWidth = 10
-      ExplicitHeight = 39
+      ExplicitWidth = 81
+      ExplicitHeight = 33
+    end
+    object lblDate: TLabel
+      Left = 21
+      Top = 0
+      Width = 155
+      Height = 41
+      Cursor = crHandPoint
+      Align = alLeft
+      Alignment = taCenter
+      AutoSize = False
+      Caption = #3650#3627#3621#3604'..'
+      Color = 8454016
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 8404992
+      Font.Height = -27
+      Font.Name = 'Tahoma'
+      Font.Style = [fsItalic]
+      ParentColor = False
+      ParentFont = False
+      Transparent = False
+      OnMouseDown = lblDateMouseDown
+      ExplicitLeft = 78
     end
     object TrackBar1: TTrackBar
       Left = 0
-      Top = 20
+      Top = 18
       Width = 113
       Height = 20
       Ctl3D = False
@@ -98,44 +106,49 @@ object FrmMainBig: TFrmMainBig
   end
   object Timer1: TTimer
     OnTimer = Timer1Timer
-    Left = 24
-    Top = 32
+    Left = 632
+    Top = 8
   end
   object TrayIcon1: TTrayIcon
     PopupMenu = PopupMenu2
     Visible = True
     OnDblClick = TrayIcon1DblClick
-    Left = 256
+    Left = 560
     Top = 8
   end
   object ColorDialog1: TColorDialog
-    Left = 128
-    Top = 8
+    Left = 440
+    Top = 16
   end
   object PopupMenu2: TPopupMenu
-    Left = 200
-    Top = 24
+    Left = 456
+    Top = 8
     object MenuItem_CBackground: TMenuItem
       AutoHotkeys = maManual
-      Caption = 'Change Color Background'
+      Caption = 'Change Color Background Time'
       ShortCut = 16433
       OnClick = MenuItem_CBackgroundClick
+    end
+    object ChangeColorBackgroundTime1: TMenuItem
+      Caption = 'Change Color Background Date'
+      ShortCut = 16434
+      OnClick = ChangeColorBackgroundTime1Click
     end
     object MenuItem_CDate: TMenuItem
       AutoHotkeys = maManual
       Caption = 'Change Color Date'
-      ShortCut = 16434
+      ShortCut = 16435
       OnClick = MenuItem_CDateClick
     end
     object MenuItem_CTime: TMenuItem
       AutoHotkeys = maManual
       Caption = 'Change Color Time'
-      ShortCut = 16435
+      ShortCut = 16436
       OnClick = MenuItem_CTimeClick
     end
     object MenuItem_Alpha: TMenuItem
       Caption = 'Alpha Color'
-      ShortCut = 16436
+      ShortCut = 16437
       OnClick = MenuItem_AlphaClick
     end
     object N1: TMenuItem

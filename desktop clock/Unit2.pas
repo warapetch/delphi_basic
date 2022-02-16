@@ -1,4 +1,4 @@
-unit Unit1;
+unit Unit2;
 
 interface
 
@@ -8,12 +8,10 @@ uses
   Vcl.ComCtrls;
 
 type
-  TFrmMainBig = class(TForm)
-    lblTime: TLabel;
+  TFrmMainSmall = class(TForm)
     Timer1: TTimer;
     pnlDate: TPanel;
     lblDayName: TLabel;
-    lblDate: TLabel;
     TrayIcon1: TTrayIcon;
     ColorDialog1: TColorDialog;
     PopupMenu2: TPopupMenu;
@@ -26,6 +24,9 @@ type
     MenuItem_Close2: TMenuItem;
     MenuItem_Alpha: TMenuItem;
     TrackBar1: TTrackBar;
+    lblTime: TLabel;
+    lblDate: TLabel;
+    ChangeColorBackgroundTime1: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -38,6 +39,7 @@ type
     procedure MenuItem_Close2Click(Sender: TObject);
     procedure MenuItem_AlphaClick(Sender: TObject);
     procedure TrackBar1Change(Sender: TObject);
+    procedure ChangeColorBackgroundTime1Click(Sender: TObject);
   private
     { Private declarations }
      procedure WMNCHitTest(var Msg: TWMNCHitTest) ; message WM_NCHitTest;
@@ -51,36 +53,37 @@ type
   end;
 
 var
-  FrmMainBig: TFrmMainBig;
+  FrmMainSmall: TFrmMainSmall;
 
 implementation
 
 {$R *.dfm}
 uses System.IniFiles;
 
-function TFrmMainBig.InvertColor(const Color: TColor): TColor;
+function TFrmMainSmall.InvertColor(const Color: TColor): TColor;
 begin
     result := TColor(RGB(255 - GetRValue(Color),
                          255 - GetGValue(Color),
                          255 - GetBValue(Color)));
 end;
 
-procedure TFrmMainBig.MenuItem_AlphaClick(Sender: TObject);
+procedure TFrmMainSmall.MenuItem_AlphaClick(Sender: TObject);
 begin
     TrackBar1.Visible := NOT TrackBar1.Visible;
 end;
 
-procedure TFrmMainBig.MenuItem_CBackgroundClick(Sender: TObject);
+procedure TFrmMainSmall.MenuItem_CBackgroundClick(Sender: TObject);
 begin
     if ColorDialog1.Execute() then
        begin
           Self.Color := ColorDialog1.Color;
 
+          lblTime.Color      := ColorDialog1.Color;
           lblTime.Font.Color := InvertColor(ColorDialog1.Color);
        end;
 end;
 
-procedure TFrmMainBig.MenuItem_CDateClick(Sender: TObject);
+procedure TFrmMainSmall.MenuItem_CDateClick(Sender: TObject);
 begin
     if ColorDialog1.Execute() then
        begin
@@ -88,12 +91,12 @@ begin
        end;
 end;
 
-procedure TFrmMainBig.MenuItem_Close2Click(Sender: TObject);
+procedure TFrmMainSmall.MenuItem_Close2Click(Sender: TObject);
 begin
     Close;
 end;
 
-procedure TFrmMainBig.MenuItem_CTimeClick(Sender: TObject);
+procedure TFrmMainSmall.MenuItem_CTimeClick(Sender: TObject);
 begin
     if ColorDialog1.Execute() then
        begin
@@ -101,20 +104,22 @@ begin
        end;
 end;
 
-procedure TFrmMainBig.MenuItem_SaveConfigClick(Sender: TObject);
+procedure TFrmMainSmall.MenuItem_SaveConfigClick(Sender: TObject);
 begin
     TrackBar1.Visible := False;
 
     SaveConfig;
 end;
 
-procedure TFrmMainBig.LoadConfig;
+procedure TFrmMainSmall.LoadConfig;
 var mConfig : TMemIniFile;   // System.IniFiles
 begin
     mConfig := TMemIniFile.Create('desktop_clock.ini');
     lblDate.Font.Color := StringToColor(mConfig.ReadString('colors','date','clBlack'));
     lblTime.Font.Color := StringToColor(mConfig.ReadString('colors','time','$00804000'));
     Self.Color         := StringToColor(mConfig.ReadString('colors','background','clWhite'));
+    lblDate.Color      := StringToColor(mConfig.ReadString('colors','background_date','clyellow'));
+    lblTime.Color      := StringToColor(mConfig.ReadString('colors','background_time','clWhite'));
     TrackBar1.Position  := StrToInt(mConfig.ReadString('colors','alpha','190'));
     // Position
     mConfig.Free;
@@ -122,20 +127,33 @@ begin
     self.AlphaBlendValue := TrackBar1.Position;
 end;
 
-procedure TFrmMainBig.SaveConfig;
+procedure TFrmMainSmall.SaveConfig;
 var mConfig : TMemIniFile;   // System.IniFiles
 begin
     mConfig := TMemIniFile.Create('desktop_clock.ini');
     mConfig.WriteString('colors','date',ColorToString(lblDate.Font.Color));
     mConfig.WriteString('colors','time',ColorToString(lblTime.Font.Color));
     mConfig.WriteString('colors','background',ColorToString(Self.Color));
+    mConfig.WriteString('colors','background_date',ColorToString(lblDate.Color));
+    mConfig.WriteString('colors','background_time',ColorToString(lblTime.Color));
     mConfig.WriteString('colors','alpha',IntToStr(TrackBar1.Position));
     // Position
     mConfig.UpdateFile; // Save to File
     mConfig.Free;
 end;
 
-procedure TFrmMainBig.FormCreate(Sender: TObject);
+procedure TFrmMainSmall.ChangeColorBackgroundTime1Click(Sender: TObject);
+begin
+    if ColorDialog1.Execute() then
+       begin
+          //Self.Color := ColorDialog1.Color;
+
+          lblDate.Color := ColorDialog1.Color;
+          lblDate.Font.Color := InvertColor(ColorDialog1.Color);
+       end;
+end;
+
+procedure TFrmMainSmall.FormCreate(Sender: TObject);
 begin
     LoadConfig;
 
@@ -150,7 +168,7 @@ begin
 
 end;
 
-procedure TFrmMainBig.FormShow(Sender: TObject);
+procedure TFrmMainSmall.FormShow(Sender: TObject);
 begin
     // Set Position is Right side
     Left := Screen.Width - (Self.Width + 10);
@@ -159,7 +177,7 @@ begin
     ShowWindow(Application.Handle, SW_HIDE);
 end;
 
-function TFrmMainBig.SetThaiDate : String;
+function TFrmMainSmall.SetThaiDate : String;
 var iYear : Integer;
     sDM : String;
 begin
@@ -169,14 +187,13 @@ begin
     Result := sDM+IntToStr(iYear);
 end;
 
-procedure TFrmMainBig.SetThaiDayName;
+procedure TFrmMainSmall.SetThaiDayName;
 var sDayName : String;
     iDayOfWeek : Smallint;
 begin
     iDayOfWeek := DayOfWeek(DATE);
     sDayName := FormatDateTime('DDDD',DATE);
     lblDayName.Caption := ' '+sDayName+' ';
-    lblDayName.Font.Color := clBlack;
 
     // 1 = Sunday  , Monday , Tuesday , Wednesday , Thursday , Friday ,
     // 7 = Saturday
@@ -191,9 +208,11 @@ begin
     end;
 
     pnlDate.Update;
+    lblDayName.Font.Color := InvertColor( pnlDate.Color);
+    lblDayName.Update;
 end;
 
-procedure TFrmMainBig.Timer1Timer(Sender: TObject);
+procedure TFrmMainSmall.Timer1Timer(Sender: TObject);
 begin
     SetThaiDayName;
 
@@ -202,17 +221,17 @@ begin
     lblTime.Caption := FormatDateTime('HH:NN:SS',TIME);
 end;
 
-procedure TFrmMainBig.TrackBar1Change(Sender: TObject);
+procedure TFrmMainSmall.TrackBar1Change(Sender: TObject);
 begin
    self.AlphaBlendValue := TrackBar1.Position;
 end;
 
-procedure TFrmMainBig.TrayIcon1DblClick(Sender: TObject);
+procedure TFrmMainSmall.TrayIcon1DblClick(Sender: TObject);
 begin
     Self.Show;
 end;
 
-procedure TFrmMainBig.lblDateMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+procedure TFrmMainSmall.lblDateMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 const sc_DragMove = $F012;
 begin
    // send message to Windows , Allow Move this form on Mouse-Drag
@@ -220,7 +239,7 @@ begin
    Perform( wm_SysCommand, sc_DragMove, 0 );
 end;
 
-procedure TFrmMainBig.WMNCHitTest(var Msg: TWMNCHitTest);
+procedure TFrmMainSmall.WMNCHitTest(var Msg: TWMNCHitTest);
 begin
     // Mouse-Drag at lblTime and form can Move
     // Drag me it say drag form.caption
