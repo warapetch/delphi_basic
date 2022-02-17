@@ -3,8 +3,8 @@ object FrmMainSmall: TFrmMainSmall
   Top = 0
   BorderStyle = bsNone
   Caption = 'DateTime'
-  ClientHeight = 38
-  ClientWidth = 352
+  ClientHeight = 28
+  ClientWidth = 350
   Color = clWhite
   DoubleBuffered = True
   Font.Charset = DEFAULT_CHARSET
@@ -14,6 +14,7 @@ object FrmMainSmall: TFrmMainSmall
   Font.Style = []
   FormStyle = fsStayOnTop
   PopupMenu = PopupMenu2
+  ScreenSnap = True
   OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
@@ -21,36 +22,37 @@ object FrmMainSmall: TFrmMainSmall
   object pnlDate: TPanel
     Left = 0
     Top = 0
-    Width = 352
-    Height = 41
-    Align = alTop
+    Width = 350
+    Height = 28
+    Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitWidth = 507
+    ExplicitWidth = 412
+    ExplicitHeight = 20
     object lblDayName: TLabel
       Left = 0
       Top = 0
-      Width = 21
-      Height = 41
+      Width = 18
+      Height = 28
       Cursor = crHandPoint
       Align = alLeft
       Alignment = taCenter
       Caption = '...'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
-      Font.Height = -24
+      Font.Height = -21
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
       Transparent = False
       OnMouseDown = lblDateMouseDown
-      ExplicitHeight = 29
+      ExplicitHeight = 25
     end
     object lblTime: TLabel
-      Left = 176
+      Left = 173
       Top = 0
-      Width = 176
-      Height = 41
+      Width = 177
+      Height = 28
       Cursor = crHandPoint
       Align = alClient
       Alignment = taCenter
@@ -58,21 +60,22 @@ object FrmMainSmall: TFrmMainSmall
       Color = 8454143
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 8404992
-      Font.Height = -27
+      Font.Height = -21
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentColor = False
       ParentFont = False
       Transparent = False
       OnMouseDown = lblDateMouseDown
-      ExplicitWidth = 81
-      ExplicitHeight = 33
+      ExplicitLeft = 176
+      ExplicitWidth = 63
+      ExplicitHeight = 25
     end
     object lblDate: TLabel
-      Left = 21
+      Left = 18
       Top = 0
       Width = 155
-      Height = 41
+      Height = 28
       Cursor = crHandPoint
       Align = alLeft
       Alignment = taCenter
@@ -81,14 +84,15 @@ object FrmMainSmall: TFrmMainSmall
       Color = 8454016
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 8404992
-      Font.Height = -27
+      Font.Height = -21
       Font.Name = 'Tahoma'
-      Font.Style = [fsItalic]
+      Font.Style = []
       ParentColor = False
       ParentFont = False
       Transparent = False
       OnMouseDown = lblDateMouseDown
       ExplicitLeft = 78
+      ExplicitHeight = 41
     end
     object TrackBar1: TTrackBar
       Left = 0
@@ -146,9 +150,14 @@ object FrmMainSmall: TFrmMainSmall
       ShortCut = 16436
       OnClick = MenuItem_CTimeClick
     end
+    object ChangeColorDayName1: TMenuItem
+      Caption = 'Change Color DayName'
+      ShortCut = 16437
+      OnClick = ChangeColorDayName1Click
+    end
     object MenuItem_Alpha: TMenuItem
       Caption = 'Alpha Color'
-      ShortCut = 16437
+      ShortCut = 16438
       OnClick = MenuItem_AlphaClick
     end
     object N1: TMenuItem

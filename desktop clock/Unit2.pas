@@ -27,6 +27,7 @@ type
     lblTime: TLabel;
     lblDate: TLabel;
     ChangeColorBackgroundTime1: TMenuItem;
+    ChangeColorDayName1: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -40,6 +41,7 @@ type
     procedure MenuItem_AlphaClick(Sender: TObject);
     procedure TrackBar1Change(Sender: TObject);
     procedure ChangeColorBackgroundTime1Click(Sender: TObject);
+    procedure ChangeColorDayName1Click(Sender: TObject);
   private
     { Private declarations }
      procedure WMNCHitTest(var Msg: TWMNCHitTest) ; message WM_NCHitTest;
@@ -117,6 +119,7 @@ begin
     mConfig := TMemIniFile.Create('desktop_clock.ini');
     lblDate.Font.Color := StringToColor(mConfig.ReadString('colors','date','clBlack'));
     lblTime.Font.Color := StringToColor(mConfig.ReadString('colors','time','$00804000'));
+    lblDayName.Font.Color:= StringToColor(mConfig.ReadString('colors','dayname','clBlack'));
     Self.Color         := StringToColor(mConfig.ReadString('colors','background','clWhite'));
     lblDate.Color      := StringToColor(mConfig.ReadString('colors','background_date','clyellow'));
     lblTime.Color      := StringToColor(mConfig.ReadString('colors','background_time','clWhite'));
@@ -133,6 +136,7 @@ begin
     mConfig := TMemIniFile.Create('desktop_clock.ini');
     mConfig.WriteString('colors','date',ColorToString(lblDate.Font.Color));
     mConfig.WriteString('colors','time',ColorToString(lblTime.Font.Color));
+    mConfig.WriteString('colors','dayname',ColorToString(lblDayName.Font.Color));
     mConfig.WriteString('colors','background',ColorToString(Self.Color));
     mConfig.WriteString('colors','background_date',ColorToString(lblDate.Color));
     mConfig.WriteString('colors','background_time',ColorToString(lblTime.Color));
@@ -150,6 +154,14 @@ begin
 
           lblDate.Color := ColorDialog1.Color;
           lblDate.Font.Color := InvertColor(ColorDialog1.Color);
+       end;
+end;
+
+procedure TFrmMainSmall.ChangeColorDayName1Click(Sender: TObject);
+begin
+    if ColorDialog1.Execute() then
+       begin
+          lblDayName.Font.Color := ColorDialog1.Color;
        end;
 end;
 
@@ -208,8 +220,9 @@ begin
     end;
 
     pnlDate.Update;
-    lblDayName.Font.Color := InvertColor( pnlDate.Color);
-    lblDayName.Update;
+
+//    lblDayName.Font.Color := InvertColor( pnlDate.Color);
+//    lblDayName.Update;
 end;
 
 procedure TFrmMainSmall.Timer1Timer(Sender: TObject);
