@@ -1,0 +1,24 @@
+*.exe
+*.bmp
+*.jpg
+*.png
+*.bat
+*.dcu
+*.~*
+*.jfif
+*.local
+*.identcache
+
+cpn_line_notify/
+horse-upload
+horse-master
+horse-jhonson
+DataSetConverter4Delphi
+sqlite 3.38
+web
+./horse-upload
+./horse-master
+./horse-jhonson
+./DataSetConverter4Delphi
+./sqlite 3.38
+./web
