@@ -33,7 +33,8 @@ https://www.youtube.com/watch?v=6zqBwR5Bnkk&ab_channel=WarapetchFreelanceProgram
  <br>
 คำอธิบาย Open SSL ดาวน์โหลดล่าสุด <br>
 https://github.com/warapetch/delphi_basic/blob/main/BitKub/openSSL.md <br>
-
+<br>
+<br>
 
 📌 เอกสาร BitKub API
 https://github.com/bitkub/bitkub-official-api-docs
