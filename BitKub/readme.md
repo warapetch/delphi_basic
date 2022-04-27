@@ -27,9 +27,12 @@ https://www.youtube.com/watch?v=6zqBwR5Bnkk&ab_channel=WarapetchFreelanceProgram
 - Open SSL ประกอบด้วย 2 ไฟล์ <br>
 --- libeay32.dll <br>
 --- ssleay32.dll <br>
-* ไว้ที่เดียวกับ EXE
-คำอธิบาย Open SSL ดาวน์โหลดล่าสุด
-https://github.com/warapetch/delphi_basic/blob/main/BitKub/openSSL.md
+---  ไว้ที่เดียวกับ EXE <br>
+- ไว้ที่เดียวกับ EXE ถ้าโปรแกรมอื่นต้องการใช้งานด้วย <br>
+ก็สามารถไว้ที่โฟลเดอร์ System32 หรือ SysWOW64
+ <br>
+คำอธิบาย Open SSL ดาวน์โหลดล่าสุด <br>
+https://github.com/warapetch/delphi_basic/blob/main/BitKub/openSSL.md <br>
 
 
 📌 เอกสาร BitKub API
