@@ -23,6 +23,12 @@ https://www.youtube.com/watch?v=6zqBwR5Bnkk&ab_channel=WarapetchFreelanceProgram
 - Internet , API
 - BitKub API
 
+## ไฟล์ที่จำเป็น
+- Open SSL ประกอบด้วย 2 ไฟล์ <br>
+--- libeay32.dll <br>
+--- ssleay32.dll <br>
+* ไว้ที่เดียวกับ EXE
+
 📌 เอกสาร BitKub API
 https://github.com/bitkub/bitkub-official-api-docs
 
