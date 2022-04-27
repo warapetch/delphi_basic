@@ -28,6 +28,9 @@ https://www.youtube.com/watch?v=6zqBwR5Bnkk&ab_channel=WarapetchFreelanceProgram
 --- libeay32.dll <br>
 --- ssleay32.dll <br>
 * ไว้ที่เดียวกับ EXE
+คำอธิบาย Open SSL ดาวน์โหลดล่าสุด
+https://github.com/warapetch/delphi_basic/blob/main/BitKub/openSSL.md
+
 
 📌 เอกสาร BitKub API
 https://github.com/bitkub/bitkub-official-api-docs
